@@ -7,8 +7,9 @@ from cliente.models import Cliente
 class Animal(models.Model):
     nome = models.CharField(max_length=100)
     raca = models.CharField(max_length=100)
-    idade = models.IntegerField()
+    idade = models.CharField(max_length=30)
     peso = models.FloatField()
+    qtd_vacinas = models.IntegerField()
     dono = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
 def __str__(self):
