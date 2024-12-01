@@ -20,9 +20,11 @@ from rest_framework.routers import SimpleRouter
 from rest_framework.authtoken import views
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from cliente.api.views import ClienteViewSet
+from animal.api.views import AnimalViewSet
 
 router = SimpleRouter()
 router.register("Cliente", ClienteViewSet, basename="Clientes")
+router.register("Animal", AnimalViewSet, basename="Animais")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
