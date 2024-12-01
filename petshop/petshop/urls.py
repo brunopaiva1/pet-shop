@@ -17,14 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from rest_framework.routers import SimpleRouter
-# from rest_framework.authentication import views
+from rest_framework.authtoken import views
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+from cliente.api.views import ClienteViewSet
 
 router = SimpleRouter()
+router.register("Cliente", ClienteViewSet, basename="Clientes")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path("api/token-auth/", views.obtain_auth_token),
+    path("api/token-auth/", views.obtain_auth_token),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('swagger/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
 ]+router.urls
