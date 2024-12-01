@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'usuario',
     'cliente',
     'animais',
+    'servicoPet',
 ]
 
 MIDDLEWARE = [
