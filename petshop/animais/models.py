@@ -9,7 +9,7 @@ class Animal(models.Model):
     raca = models.CharField(max_length=100)
     idade = models.CharField(max_length=30)
     peso = models.FloatField()
-    qtd_vacinas = models.IntegerField()
+    qtd_vacinas = models.IntegerField(default=0)
     dono = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
 def __str__(self):
