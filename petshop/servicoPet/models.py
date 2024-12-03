@@ -1,4 +1,5 @@
 from django.db import models
+from django.forms import ValidationError
 from cliente.models import Cliente
 from animais.models import Animal
 
@@ -15,6 +16,19 @@ class ServicoPet(models.Model):
         ('banho e tosa', 'Banho e Tosa')
     ])
     
+    def clean(self):
+        conflitos = ServicoPet.objects.filter(
+            horarioEntrada__lt=self.horarioSaida,
+            horarioSaida__gt=self.horarioEntrada
+        ).exclude(id=self.id)
+        
+        if conflitos.exists():
+            raise ValidationError("Já existe um serviço agendado neste horário.")
+        
+    def save(self, *args, **kwargs):
+        self.clean()
+        super().save(*args, **kwargs)   
+             
     def __str__(self):
         return f'ServicoPet {self.cliente}'
     
