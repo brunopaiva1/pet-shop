@@ -12,9 +12,9 @@ class Animal(models.Model):
     qtd_vacinas = models.IntegerField(default=0)
     dono = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     
-def __str__(self):
-        return f'Animal {self.nome}'
+    def __str__(self):
+        return f'{self.nome} de {self.dono}'
     
-class Meta:
-    verbose_name = "Animal"
-    verbose_name_plural = "Animais"    
+    class Meta:
+        verbose_name = "Animal"
+        verbose_name_plural = "Animais"    
