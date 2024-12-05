@@ -19,8 +19,10 @@ from django.urls import path
 from rest_framework.routers import SimpleRouter
 from rest_framework.authtoken import views
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
+
 from cliente.api.views import ClienteViewSet
 from animais.api.views import AnimalViewSet
+from produto.api.views import ProdutoViewSet, VendaViewSet
 from servicoPet.api.views import ServicoPetViewSet
 
 router = SimpleRouter()
@@ -28,6 +30,8 @@ router = SimpleRouter()
 router.register("Cliente", ClienteViewSet, basename="Clientes")
 router.register("Animal", AnimalViewSet, basename="animais")
 router.register("ServicoPet", ServicoPetViewSet, basename="ServicosPet")
+router.register("Produto", ProdutoViewSet, basename="Produtos")
+router.register("Venda", VendaViewSet, basename="Vendas")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
